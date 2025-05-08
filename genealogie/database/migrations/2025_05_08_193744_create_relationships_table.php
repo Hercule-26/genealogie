@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('relationships', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('child_id');
             $table->timestamps();
+
+            $table->index('created_by');
+            $table->index('parent_id');
+            $table->index('child_id');
+
         });
     }
 
