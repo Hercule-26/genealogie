@@ -13,10 +13,10 @@ class PersonController extends Controller
         return view('index', ['peoples' => $peoples]);
     }
 
-    public function show()
+    public function show($id)
     {
-        $people = Person::all();
-        return view('show', ['people' => $people]);
+        $person = Person::with(['children', 'parents'])->findOrFail($id);
+        return view('show', ['person' => $person]);
     }
 
     public function create()

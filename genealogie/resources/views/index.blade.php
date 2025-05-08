@@ -9,7 +9,9 @@
         @if ($peoples->isNotEmpty())
             @foreach ($peoples as $person)
                 <li class="list-group-item">
-                    {{ $person->first_name }} {{ $person->last_name }}
+                    <a href="{{ route('show', $person->id) }}">
+                        {{ $person->first_name }} {{ $person->last_name }}
+                    </a>
                     <br>
                     <span class="text-muted">
                         Create by : {{ $person->creator->name ?? 'User unknown' }}
