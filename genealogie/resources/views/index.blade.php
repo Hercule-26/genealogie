@@ -9,7 +9,7 @@
         @if ($peoples->isNotEmpty())
             @foreach ($peoples as $person)
                 <li class="list-group-item">
-                    <a href="{{ route('show', $person->id) }}">
+                    <a href="{{ route('person.show', $person->id) }}">
                         {{ $person->first_name }} {{ $person->last_name }}
                     </a>
                     <br>
