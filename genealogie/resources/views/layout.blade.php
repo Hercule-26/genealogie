@@ -12,7 +12,11 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/create">Create</a></li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('create') }}">Create</a>
+                        </li>
+                    @endauth                
                 </ul>
             </div>
         </div>
