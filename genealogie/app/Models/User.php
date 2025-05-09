@@ -27,9 +27,13 @@ class User extends Authenticatable
         ];
     }
 
-    // Use the username for authentification
     public function getAuthIdentifierName()
     {
         return 'username';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
     }
 }

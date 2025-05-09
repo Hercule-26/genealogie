@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Person;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+
 class PersonController extends Controller
 {
     public function index()
@@ -26,6 +28,10 @@ class PersonController extends Controller
 
     public function store(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -41,14 +47,14 @@ class PersonController extends Controller
             $person->birth_name = $validated['birth_name'] ?? null;
             $person->middle_names = $validated['middle_names'] ?? null;
             $person->date_of_birth = $validated['date_of_birth'] ?? null;
-            $person->created_by = 1;
+            $person->created_by = Auth::id();
 
             $person->save();
 
             return redirect()->route('index')->with('success', 'Person added successfully.');
         } catch (\Exception $e) {
             Log::error('Error while saving person: ' . $e->getMessage());
-            return redirect()->back()->withInput()->with('error', 'An error occurred while saving the person.');
+            return redirect()->back()->with('error', 'An error occurred while saving the person.');
         }
     }
 }

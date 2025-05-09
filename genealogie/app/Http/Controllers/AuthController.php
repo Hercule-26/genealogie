@@ -24,10 +24,10 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
-
-        return redirect('/');
-    }
+            $request->session()->regenerate();
+            return redirect('/');
+        }
+        
         return back()->withErrors([
             'username' => 'Invalid username or password.',
         ]);

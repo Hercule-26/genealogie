@@ -14,7 +14,7 @@
                     </a>
                     <br>
                     <span class="text-muted">
-                        Create by : {{ $person->creator->name ?? 'User unknown' }}
+                        Create by : {{ $person->creator->username ?? 'User unknown' }}
                     </span>
                 </li>
             @endforeach
