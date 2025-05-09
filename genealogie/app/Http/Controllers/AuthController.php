@@ -27,7 +27,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect('/');
         }
-        
+
         return back()->withErrors([
             'username' => 'Invalid username or password.',
         ]);

@@ -37,15 +37,16 @@ class PersonController extends Controller
             'last_name' => 'required|string|max:255',
             'birth_name' => 'nullable|string|max:255',
             'middle_names' => 'nullable|string|max:255',
-            'date_of_birth' => 'nullable|date',
+            'date_of_birth' => 'nullable|date_format:Y-m-d',
         ]);
 
         try {
             $person = new Person();
-            $person->first_name = $validated['first_name'];
-            $person->last_name = $validated['last_name'];
-            $person->birth_name = $validated['birth_name'] ?? null;
-            $person->middle_names = $validated['middle_names'] ?? null;
+
+            $person->first_name = ucfirst(strtolower($validated['first_name']));
+            $person->middle_names = $validated['middle_name'] ?? null; // I was not able to complete this validation asked on
+            $person->last_name = strtoupper($validated['last_name']);
+            $person->birth_name = $validated['birth_name'] ?? $person->last_name;
             $person->date_of_birth = $validated['date_of_birth'] ?? null;
             $person->created_by = Auth::id();
 
