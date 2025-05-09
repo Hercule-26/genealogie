@@ -22,5 +22,4 @@
             <li class="list-group-item">The is no person registered on database.</li>    
         @endif
     </ul>
-
 @endsection

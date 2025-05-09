@@ -16,7 +16,20 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('create') }}">Create</a>
                         </li>
-                    @endauth                
+                        <li class="nav-item">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Logout</button>
+                            </form>
+                        </li>
+                    @endauth
+
+                    @guest
+                        <form method="GET" action="{{ route('login') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    @endguest
                 </ul>
             </div>
         </div>
