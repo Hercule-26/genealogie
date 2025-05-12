@@ -1,7 +1,7 @@
 # Genealogie
 Site de généalogie réaliser en Laravel/PHP
 
-Autheur : **Alper Cakirgenc**
+Auteur : **Alper Cakirgenc**
 
 
 ## Objectif
