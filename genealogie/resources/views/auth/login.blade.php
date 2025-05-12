@@ -7,7 +7,6 @@
     <h1 class="mb-4">Login</h1>
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" 
@@ -16,11 +15,6 @@
                    name="username" 
                    value="{{ old('username') }}" 
                    required>
-            @error('username')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
         </div>
 
         <div class="mb-3">
@@ -30,11 +24,6 @@
                    id="password" 
                    name="password" 
                    required>
-            @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Login</button>

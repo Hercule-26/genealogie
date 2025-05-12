@@ -7,7 +7,6 @@
     <h1 class="mb-4">Register</h1>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" 
